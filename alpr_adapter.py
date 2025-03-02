@@ -184,13 +184,40 @@ class ALPR_adapter(ModuleRunner):
                 for plate in results[plate_type]:
                     # Only include plates with confidence above threshold
                     if plate["confidence"] >= threshold:
-                        plate_data = {
-                            "confidence": plate["confidence"],
-                            "is_day_plate": plate["is_day_plate"],
-                            "label": plate["license_number"],
-                            "plate": plate["license_number"],
-                            "coordinates": plate["corners"],
-                        }
+                        # Use detection_box if available, otherwise calculate from corners
+                        if "detection_box" in plate and plate["detection_box"] is not None:
+                            # If detection_box is available, use it directly
+                            x1, y1, x2, y2 = plate["detection_box"]
+                            plate_data = {
+                                "confidence": plate["confidence"],
+                                "is_day_plate": plate["is_day_plate"],
+                                "label": plate["license_number"],
+                                "plate": plate["license_number"],
+                                "x_min": x1,
+                                "y_min": y1,
+                                "x_max": x2,
+                                "y_max": y2
+                            }
+                        else:
+                            # Otherwise, calculate the bounding box from the corners
+                            corners = plate["corners"]
+                            # Convert corners to numpy array if not already
+                            corners_arr = np.array(corners)
+                            x_min = np.min(corners_arr[:, 0])
+                            y_min = np.min(corners_arr[:, 1])
+                            x_max = np.max(corners_arr[:, 0])
+                            y_max = np.max(corners_arr[:, 1])
+                            
+                            plate_data = {
+                                "confidence": plate["confidence"],
+                                "is_day_plate": plate["is_day_plate"],
+                                "label": plate["license_number"],
+                                "plate": plate["license_number"],
+                                "x_min": float(x_min),
+                                "y_min": float(y_min),
+                                "x_max": float(x_max),
+                                "y_max": float(y_max)
+                            }
                         
                         if "state" in plate:
                             plate_data["state"] = plate["state"]

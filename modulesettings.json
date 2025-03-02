@@ -23,7 +23,7 @@
         "FilePath"           : "alpr_adapter.py",
         "Runtime"            : "python3.8",
         "RuntimeLocation"    : "Local", 
-        "PostStartPauseSecs" : 1,
+        "PostStartPauseSecs" : 0,
         "Queue"              : "alpr_queue",
         "Parallelism"        : 0
       },

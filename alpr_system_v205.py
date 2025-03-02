@@ -226,10 +226,10 @@ class ALPRSystem:
                         box = results.boxes.xyxy[i].cpu().numpy()
                         # Scale box coordinates
                         x1, y1, x2, y2 = box
-                        x1 = float(x1 * scale_x)
-                        y1 = float(y1 * scale_y)
-                        x2 = float(x2 * scale_x)
-                        y2 = float(y2 * scale_y)
+                        x1 = int(x1 * scale_x)-15
+                        y1 = int(y1 * scale_y)-15
+                        x2 = int(x2 * scale_x)+15
+                        y2 = int(y2 * scale_y)+15
                         detection_box = [x1, y1, x2, y2]  # [x1, y1, x2, y2] format
                     
                     # Determine if it's a day plate or night plate based on the class
@@ -693,6 +693,7 @@ class ALPRSystem:
         
         plate_result["characters"] = char_results
         plate_result["plate"] = license_number
+        plate_result["license_number"] = license_number  # Add this line to fix the KeyError
         plate_result["confidence"] = avg_confidence
         
         # Store plate dimensions for debugging
