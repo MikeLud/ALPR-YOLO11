@@ -129,7 +129,7 @@ class ALPR_adapter(ModuleRunner):
             plate_threshold = float(data.get_value("min_confidence", "0.4"))
             
             # Only detect license plates
-            response = self._detect_license_plate(img, plate_threshold)
+            response = self.detect_license_plate(img, plate_threshold)
 
             with open("log.txt", "a") as text_file:
                 json.dump(response, text_file, indent=2)
@@ -142,7 +142,7 @@ class ALPR_adapter(ModuleRunner):
 
         return response
 
-    def _detect_license_plate(self, img, threshold):
+    def detect_license_plate(self, img, threshold):
         """
         Detect license plates in an image
         """
@@ -222,7 +222,11 @@ class ALPR_adapter(ModuleRunner):
                         if "state" in plate:
                             plate_data["state"] = plate["state"]
                             plate_data["state_confidence"] = plate["state_confidence"]
-                                                
+                        
+                        # Add top plate alternatives
+                        if "top_plates" in plate:
+                            plate_data["top_plates"] = plate["top_plates"]
+                            
                         plates.append(plate_data)
             
             # Update statistics
@@ -254,7 +258,7 @@ class ALPR_adapter(ModuleRunner):
         except Exception as ex:
             self.report_error(ex, __file__, f"Error detecting license plates: {str(ex)}")
             return {"success": False, "error": f"Error detecting license plates: {str(ex)}"}
-
+    
     def status(self) -> JSON:
         statusData = super().status()
         statusData["platesDetected"] = self._plates_detected

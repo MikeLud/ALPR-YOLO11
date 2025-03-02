@@ -524,12 +524,18 @@ class ALPRSystem:
         
         return organized_chars
     
-    def classify_character(self, char_image: np.ndarray) -> Tuple[str, float]:
+    def classify_character(self, char_image: np.ndarray) -> List[Tuple[str, float]]:
         """
-        Classify a character using OCR.
+        Classify a character using OCR and return top 5 predictions.
+        
+        Args:
+            char_image: The character image to classify
+            
+        Returns:
+            List of tuples containing (character, confidence) for top 5 predictions
         """
         if char_image.size == 0:
-            return "?", 0.0
+            return [("?", 0.0)]
         
         # Resize character image for classifier
         char_resized = cv2.resize(char_image, self.char_classifier_resolution)
@@ -537,18 +543,125 @@ class ALPRSystem:
         # Run character classification model with configurable confidence threshold
         results = self.char_classifier_model.predict(char_resized, conf=self.char_classifier_confidence, verbose=False)[0]
         
-        # Get the predicted class and confidence
-        if hasattr(results, 'probs') and hasattr(results.probs, 'top1'):
-            char_idx = int(results.probs.top1)
-            confidence = float(results.probs.top1conf.item())
-            
-            # Convert class index to character
-            char_names = self.char_classifier_model.names
-            character = char_names[char_idx]
-            
-            return character, confidence
+        top_predictions = []
         
-        return "?", 0.0
+        # Extract top5 predictions if available
+        if hasattr(results, 'probs'):
+            probs = results.probs
+            
+            # Try to access probability data
+            if hasattr(probs, 'data'):
+                try:
+                    # Convert to tensor if it's not already
+                    probs_tensor = probs.data
+                    if not isinstance(probs_tensor, torch.Tensor):
+                        probs_tensor = torch.tensor(probs_tensor)
+                    
+                    # Get top 5 predictions
+                    values, indices = torch.topk(probs_tensor, min(5, len(probs_tensor)))
+                    
+                    # Convert to list of (char, confidence) tuples
+                    char_names = self.char_classifier_model.names
+                    for i in range(len(values)):
+                        idx = int(indices[i].item())
+                        conf = float(values[i].item())
+                        
+                        # Only include predictions with confidence > 0.25
+                        if conf >= 0.25:
+                            character = char_names[idx]
+                            top_predictions.append((character, conf))
+                except Exception as e:
+                    print(f"Error getting top5 predictions: {e}")
+                    
+                    # Fallback to top1 if available
+                    if hasattr(probs, 'top1') and hasattr(probs, 'top1conf'):
+                        idx = int(probs.top1)
+                        conf = float(probs.top1conf.item())
+                        
+                        char_names = self.char_classifier_model.names
+                        character = char_names[idx]
+                        top_predictions.append((character, conf))
+            elif hasattr(probs, 'top1') and hasattr(probs, 'top1conf'):
+                # Fallback to top1 if data attribute not available
+                idx = int(probs.top1)
+                conf = float(probs.top1conf.item())
+                
+                char_names = self.char_classifier_model.names
+                character = char_names[idx]
+                top_predictions.append((character, conf))
+        
+        # If no predictions were found or all had low confidence
+        if not top_predictions:
+            top_predictions.append(("?", 0.0))
+        
+        return top_predictions
+    
+    def _generate_top_plates(self, char_results: List[Dict[str, Any]], max_combinations: int = 5) -> List[Dict[str, Any]]:
+        """
+        Generate multiple possible license plate combinations using top character predictions.
+        
+        Args:
+            char_results: List of character results with top_predictions
+            max_combinations: Maximum number of combinations to return
+            
+        Returns:
+            List of alternative plate combinations with plate number and confidence
+        """
+        if not char_results:
+            return []
+        
+        # Identify positions with uncertain character predictions
+        uncertain_positions = []
+        for i, char_result in enumerate(char_results):
+            top_preds = char_result.get("top_predictions", [])
+            
+            # If we have at least 2 predictions with good confidence
+            if len(top_preds) >= 2 and top_preds[1][1] >= 0.02:
+                confidence_diff = top_preds[0][1] - top_preds[1][1]
+                uncertain_positions.append((i, confidence_diff))
+        
+        # Sort by smallest confidence difference (most uncertain first)
+        uncertain_positions.sort(key=lambda x: x[1])
+        
+        # Create base plate using top1 predictions
+        base_plate = ''.join(cr["char"] for cr in char_results)
+        base_confidence = sum(cr["confidence"] for cr in char_results) / len(char_results) if char_results else 0.0
+        
+        # Start with the base plate
+        combinations = [{"plate": base_plate, "confidence": base_confidence}]
+        
+        # Generate alternative plates by substituting at uncertain positions
+        for pos_idx, _ in uncertain_positions[:min(3, len(uncertain_positions))]:
+            char_result = char_results[pos_idx]
+            top_preds = char_result.get("top_predictions", [])[1:3]  # Use 2nd and 3rd predictions
+            
+            # Generate new plates by substituting at this position
+            new_combinations = []
+            for existing in combinations:
+                for alt_char, alt_conf in top_preds:
+                    if alt_conf >= 0.02:
+                        plate_chars = list(existing["plate"])
+                        if pos_idx < len(plate_chars):
+                            # Calculate new confidence
+                            old_char_conf = char_results[pos_idx]["confidence"]
+                            plate_chars[pos_idx] = alt_char
+                            
+                            # Adjust confidence by replacing the character's contribution
+                            char_count = len(char_results)
+                            new_conf = existing["confidence"] - (old_char_conf / char_count) + (alt_conf / char_count)
+                            
+                            new_plate = ''.join(plate_chars)
+                            new_combinations.append({"plate": new_plate, "confidence": new_conf})
+                
+            combinations.extend(new_combinations)
+            
+            # If we have enough combinations, stop
+            if len(combinations) >= max_combinations:
+                break
+        
+        # Sort by confidence and take top N
+        combinations.sort(key=lambda x: x["confidence"], reverse=True)
+        return combinations[:max_combinations]
     
     def detect_vehicle(self, image: np.ndarray) -> List[Dict[str, Any]]:
         """
@@ -680,10 +793,11 @@ class ALPRSystem:
         # Classify each character
         char_results = []
         for char_info in organized_chars:
-            char, conf = self.classify_character(char_info["image"])
+            top_chars = self.classify_character(char_info["image"])
             char_results.append({
-                "char": char,
-                "confidence": conf,
+                "char": top_chars[0][0] if top_chars else "?",  # Still use the top prediction as the main character
+                "confidence": top_chars[0][1] if top_chars else 0.0,
+                "top_predictions": top_chars,  # Store all top predictions
                 "box": char_info["box"]
             })
             
@@ -691,10 +805,14 @@ class ALPRSystem:
         license_number = ''.join(cr["char"] for cr in char_results)
         avg_confidence = sum(cr["confidence"] for cr in char_results) / len(char_results) if char_results else 0.0
         
+        # Generate alternative plate combinations
+        top_plates = self._generate_top_plates(char_results)
+        
         plate_result["characters"] = char_results
         plate_result["plate"] = license_number
-        plate_result["license_number"] = license_number  # Add this line to fix the KeyError
+        plate_result["license_number"] = license_number
         plate_result["confidence"] = avg_confidence
+        plate_result["top_plates"] = top_plates  # Add alternative plate combinations
         
         # Store plate dimensions for debugging
         if plate_image is not None:
@@ -780,7 +898,6 @@ class ALPRSystem:
                 del vehicle["image"]
         
         return results
-
 
 def process_alpr(
     image_path: str,
