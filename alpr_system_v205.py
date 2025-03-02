@@ -652,7 +652,7 @@ class ALPRSystem:
             "corners": plate_corners,
             "is_day_plate": is_day_plate,
             "characters": [],
-            "license_number": "",
+            "plate": "",
             "confidence": 0.0,
             "aspect_ratio": self.plate_aspect_ratio  # Store used aspect ratio for reference
         }
@@ -692,7 +692,7 @@ class ALPRSystem:
         avg_confidence = sum(cr["confidence"] for cr in char_results) / len(char_results) if char_results else 0.0
         
         plate_result["characters"] = char_results
-        plate_result["license_number"] = license_number
+        plate_result["plate"] = license_number
         plate_result["confidence"] = avg_confidence
         
         # Store plate dimensions for debugging

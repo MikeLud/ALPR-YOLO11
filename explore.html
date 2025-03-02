@@ -1,84 +1,99 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!--
+CODEPROJECT.AI SERVER MODULE EXPLORER
+
+This page provides the means to test this module using the same infrastructure as
+the CodeProject.AI Server explorer. This page also provides the UI elements that
+the explorer will parse and use to build up the UI of the main explorer itself.
+
+RULES AND CONVENTIONS
+
+1. This page should provide sufficient functionality to test and explore this
+   module.
+
+2. This page should use the functionality in the explorer.js file so that when
+   the elements of this page are inserted into the main explorer, it all works
+   seamlessly. Specifically, you will probably use
+
+   - clearImagePreview:         Clears the image preview area.
+   - previewImage:              Displays an image in the shared image preview area and takes a
+                                input[type=file] as parameter.
+   - submitRequest:             Sends a request to the AI server.
+   - setResultsHtml:            Sets the HTML in the shared 'results' element. Parameter is the HTML
+                                to display.
+   - getProcessingMetadataHtml: Gets HTML representing the common data returned from a call to a
+                                module.
+   - displayBaseResults:        Displays the common data returned from a call to a module.
+   - showPredictionSummary:     Displays in the shared HTML results pane the list of predictions 
+                                returned from an inference operation.
+   - clearImageResult:          Clears the image result area 
+   - showResultsImageData:      Displays an image in the shared image results area using the data
+                                returned from a call to a module, and overlays bounding boxes if
+                                present in the data
+   - showResultsBoundingBoxes:  Displays bounding boxes on the shared image results area based on
+                                the boxes returned in the predictions parameter. The first param is
+                                an array of predictions returned from a computer vision operation.
+
+3. There are 3 parts of this page that will be pulled into the main explorer
+   during runtime: The HTML, the script, and the CSS. These sections are bounded by
+
+    - HTML:   START EXPLORER MARKUP / END EXPLORER MARKUP pair, each within HTML comment brackets
+    - Script: START EXPLORER SCRIPT / END EXPLORER SCRIPT pair, each as a // comment on its own line
+    - CSS:    START EXPLORER STYLE  / END EXPLORER STYLE pair, each inside /* ... */ comments
+
+   These delimiters should be on a line by themselves
+
+4. **Please provide output elements to display the results of operations** if
+   you wish to use the standard HTML / Image results elements in the main explorer
+   - For HTML output, include a DIV with id 'results'
+   - For Image preview/output, include an IMG element with id img and a DIV with
+     id 'imageMask'
+   - For Sound preview, include an AUDIO element with id 'snd' that contains a
+     SOURCE tag
+
+5. When this file is parsed and injected into the larger explorer, the HTML is
+   injected first, then the script, then the CSS.
+
+6. **To ensure uniqueness of elements** you can include the _MID_ macro in any
+   name. This will be expanded to be [ModuleId]_ where [ModuleId] is the literal
+   ID of this module. For instance <div id="_MID_TextBox"> becomes <div id="MyModuleId_TextBox">
+-->
 <head>
     <meta charset="utf-8" />
-    <title>ALPR Module Test</title>
+    <title>License Plate Reader Module Test</title>
 
     <link id="bootstrapCss" rel="stylesheet" type="text/css" href="http://localhost:32168/assets/bootstrap-dark.min.css">
-    <link rel="stylesheet" type="text/css" href="http://localhost:32168/assets/server.css?v=2.5.0.0">
-    <script type="text/javascript" src="http://localhost:32168/assets/server.js"></script>
-    <script type="text/javascript" src="http://localhost:32168/assets/explorer.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://localhost:32168/assets/server.css?v=2.5.1.0">
+    <script type="text/javascript" src="http://localhost:32168/assets/server.js?v=2.5.1.0"></script>
+    <script type="text/javascript" src="http://localhost:32168/assets/explorer.js?v=2.5.1.0"></script>
 
     <style>
 /* START EXPLORER STYLE */
-.license-plate {
-    border: 2px solid #28a745;
-    border-radius: 5px;
-    background-color: rgba(40, 167, 69, 0.2);
-    position: absolute;
-}
-
-.vehicle {
-    border: 2px solid #17a2b8;
-    border-radius: 5px;
-    background-color: rgba(23, 162, 184, 0.2);
-    position: absolute;
-}
-
-.license-text {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 2px 6px;
-    font-size: 12px;
-    border-radius: 3px;
-}
-
-.vehicle-text {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 2px 6px;
-    font-size: 12px;
-    border-radius: 3px;
-}
 /* END EXPLORER STYLE */
     </style>
 
 </head>
 <body class="dark-mode">
 <div class="mx-auto" style="max-width: 800px;">
-    <h2 class="mb-3">ALPR Module Test</h2>
+    <h2 class="mb-3">License Plate Reader Module Test</h2>
     <form method="post" action="" enctype="multipart/form-data" id="myform">
 
 <!-- START EXPLORER MARKUP -->
         <div class="form-group row">
             <label class="col-form-label col-2">Image</label>
-            <input id="_MID_image" class="col form-control btn-light" type="file" style="width:17rem"
-                   onchange="return previewImage(this)" />
-            <input id="_MID_detectLicensePlate" class="form-control btn-success" type="button" value="Detect License Plates"
-                   style="width:11rem" onclick="_MID_onDetectLicensePlate(_MID_image)"/>
-        </div>
-        <div class="form-group row mt-2">
-            <label class="col-form-label col-2"></label>
-            <input id="_MID_detectVehicle" class="col form-control btn-info" type="button" value="Detect Vehicles"
-                   style="width:17rem" onclick="_MID_onDetectVehicle(_MID_image)"/>
-            <input id="_MID_analyze" class="form-control btn-warning" type="button" value="Complete Analysis"
-                   style="width:11rem" onclick="_MID_onAnalyzeImage(_MID_image)"/>
-        </div>
-        <div class="form-group row mt-3">
-            <label class="col-form-label col-2">Confidence</label>
-            <div class="col d-flex align-items-center">
-                <input type="range" class="form-range" id="_MID_confidence" min="0.1" max="0.95" step="0.05" value="0.4">
-                <span class="ms-2" id="_MID_confidenceValue">0.4</span>
-            </div>
+            <input class="col form-control btn-light" id="_MID_alprInput" type="file" style="width:17rem"
+                    onchange="return previewImage(this)" />
+            <input class="form-control btn-success" type="button" value="Read License Plates"
+                   id="_MID_readplate" style="width:11rem" 
+                   onclick="_MID_onReadLicensePlate(_MID_alprInput, 0.4)" />
         </div>
 <!-- END EXPLORER MARKUP -->
 
         <div class="w-100 position-relative form-control my-4 p-0">
             <div id="imgMask" class="position-absolute"
                     style="left:0;top:0;pointer-events:none;z-index:10"></div>
-            <img src="" id="imgPreview" class="w-100" style="height:350px;visibility:hidden">
+            <img src="" id="imgPreview" class="w-100" style="height:250px;visibility:hidden">
         </div>
         <div>
             <h2>Results</h2>
@@ -89,12 +104,8 @@
 
     <script type="text/javascript">
 // START EXPLORER SCRIPT
-        // Update confidence display
-        document.getElementById("_MID_confidence").addEventListener("input", function() {
-            document.getElementById("_MID_confidenceValue").textContent = this.value;
-        });
+        async function _MID_onReadLicensePlate(fileChooser, confidence) {
 
-        async function _MID_onDetectLicensePlate(fileChooser) {
             clearImagePreview();
 
             if (fileChooser.files.length == 0) {
@@ -102,239 +113,18 @@
                 return;
             }
 
-            const confidence = document.getElementById("_MID_confidence").value;
-            showPreviewImage(fileChooser.files[0]);
+            previewImage(fileChooser);
             let images = [fileChooser.files[0]];
+            let params = [["confidence", confidence]]
 
-            setResultsHtml("Detecting license plates...");
-            let data = await submitRequest('vision', 'alpr', images, [
-                { name: 'operation', value: 'plate' },
-                { name: 'min_confidence', value: confidence }
-            ]);
-            
+			setResultsHtml("Detecting license plates...");
+            let data = await submitRequest('vision', 'alpr', images, params);
             if (data) {
-                if (data.success && data.plates && data.plates.length > 0) {
-                    _MID_showLicensePlates(data.plates);
-                    
-                    let resultHtml = `<h3>Found ${data.count} license plate(s)</h3>`;
-                    
-                    for (const plate of data.plates) {
-                        resultHtml += `<div class="mb-2">
-                            <strong>License Number:</strong> ${plate.license_number}<br>
-                            <strong>Confidence:</strong> ${(plate.confidence * 100).toFixed(1)}%<br>
-                            ${plate.state ? `<strong>State:</strong> ${plate.state} (${(plate.state_confidence * 100).toFixed(1)}%)<br>` : ''}
-                            <strong>Type:</strong> ${plate.is_day_plate ? 'Day Plate' : 'Night Plate'}<br>
-                        </div>`;
-                    }
-                    
-                    resultHtml += getProcessingMetadataHtml(data);
-                    setResultsHtml(resultHtml);
-                } else {
-                    setResultsHtml(`No license plates detected! ${getProcessingMetadataHtml(data)}`);
-                }
-            }
-        }
-
-        async function _MID_onDetectVehicle(fileChooser) {
-            clearImagePreview();
-
-            if (fileChooser.files.length == 0) {
-                alert("No file was selected for vehicle detection");
-                return;
-            }
-
-            const confidence = document.getElementById("_MID_confidence").value;
-            showPreviewImage(fileChooser.files[0]);
-            let images = [fileChooser.files[0]];
-
-            setResultsHtml("Detecting vehicles...");
-            let data = await submitRequest('vision', 'alpr', images, [
-                { name: 'operation', value: 'vehicle' },
-                { name: 'min_confidence', value: confidence }
-            ]);
-            
-            if (data) {
-                if (data.success && data.vehicles && data.vehicles.length > 0) {
-                    _MID_showVehicles(data.vehicles);
-                    
-                    let resultHtml = `<h3>Found ${data.count} vehicle(s)</h3>`;
-                    
-                    for (const vehicle of data.vehicles) {
-                        resultHtml += `<div class="mb-2">
-                            <strong>Make/Model:</strong> ${vehicle.make} ${vehicle.model}<br>
-                            <strong>Confidence:</strong> ${(vehicle.confidence * 100).toFixed(1)}%<br>
-                            <strong>Make/Model Confidence:</strong> ${(vehicle.make_model_confidence * 100).toFixed(1)}%<br>
-                        </div>`;
-                    }
-                    
-                    resultHtml += getProcessingMetadataHtml(data);
-                    setResultsHtml(resultHtml);
-                } else {
-                    setResultsHtml(`No vehicles detected! ${getProcessingMetadataHtml(data)}`);
-                }
-            }
-        }
-
-        async function _MID_onAnalyzeImage(fileChooser) {
-            clearImagePreview();
-
-            if (fileChooser.files.length == 0) {
-                alert("No file was selected for analysis");
-                return;
-            }
-
-            const confidence = document.getElementById("_MID_confidence").value;
-            showPreviewImage(fileChooser.files[0]);
-            let images = [fileChooser.files[0]];
-
-            setResultsHtml("Analyzing image...");
-            let data = await submitRequest('vision', 'alpr', images, [
-                { name: 'operation', value: 'full' },
-                { name: 'min_confidence', value: confidence }
-            ]);
-            
-            if (data) {
-                if (data.success && data.analysis) {
-                    // Clear previous annotations
-                    document.getElementById('imgMask').innerHTML = '';
-                    
-                    // Show license plates if any
-                    if (data.analysis.plates && data.analysis.plates.length > 0) {
-                        _MID_showLicensePlates(data.analysis.plates);
-                    }
-                    
-                    // Show vehicles if any
-                    if (data.analysis.vehicles && data.analysis.vehicles.length > 0) {
-                        _MID_showVehicles(data.analysis.vehicles);
-                    }
-                    
-                    let resultHtml = `<h3>Analysis Results</h3>`;
-                    
-                    // License plate section
-                    resultHtml += `<h4>License Plates (${data.analysis.plate_count})</h4>`;
-                    if (data.analysis.plates && data.analysis.plates.length > 0) {
-                        for (const plate of data.analysis.plates) {
-                            resultHtml += `<div class="mb-2">
-                                <strong>License Number:</strong> ${plate.license_number}<br>
-                                <strong>Confidence:</strong> ${(plate.confidence * 100).toFixed(1)}%<br>
-                                ${plate.state ? `<strong>State:</strong> ${plate.state} (${(plate.state_confidence * 100).toFixed(1)}%)<br>` : ''}
-                                <strong>Type:</strong> ${plate.is_day_plate ? 'Day Plate' : 'Night Plate'}<br>
-                            </div>`;
-                        }
-                    } else {
-                        resultHtml += `<p>No license plates detected.</p>`;
-                    }
-                    
-                    // Vehicle section
-                    resultHtml += `<h4>Vehicles (${data.analysis.vehicle_count})</h4>`;
-                    if (data.analysis.vehicles && data.analysis.vehicles.length > 0) {
-                        for (const vehicle of data.analysis.vehicles) {
-                            resultHtml += `<div class="mb-2">
-                                <strong>Make/Model:</strong> ${vehicle.make} ${vehicle.model}<br>
-                                <strong>Confidence:</strong> ${(vehicle.confidence * 100).toFixed(1)}%<br>
-                                <strong>Make/Model Confidence:</strong> ${(vehicle.make_model_confidence * 100).toFixed(1)}%<br>
-                            </div>`;
-                        }
-                    } else {
-                        resultHtml += `<p>No vehicles detected.</p>`;
-                    }
-                    
-                    resultHtml += getProcessingMetadataHtml(data);
-                    setResultsHtml(resultHtml);
-                } else {
-                    setResultsHtml(`Analysis failed! ${getProcessingMetadataHtml(data)}`);
-                }
-            }
-        }
-
-        function _MID_showLicensePlates(plates) {
-            const imgPreview = document.getElementById('imgPreview');
-            const imgMask = document.getElementById('imgMask');
-            const imgWidth = imgPreview.clientWidth;
-            const imgHeight = imgPreview.clientHeight;
-            const originalWidth = imgPreview.naturalWidth;
-            const originalHeight = imgPreview.naturalHeight;
-            
-            // Scale factor to map coordinates from original image to displayed image
-            const scaleX = imgWidth / originalWidth;
-            const scaleY = imgHeight / originalHeight;
-            
-            for (const plate of plates) {
-                const coords = plate.coordinates;
-                
-                // Create a polygon for the license plate
-                let points = [];
-                for (let i = 0; i < coords.length; i++) {
-                    points.push([coords[i][0] * scaleX, coords[i][1] * scaleY]);
-                }
-                
-                // Create a div for the license plate boundary
-                const plateDiv = document.createElement('div');
-                plateDiv.className = 'license-plate';
-                
-                // Calculate bounding box for the coords
-                let minX = Math.min(...points.map(p => p[0]));
-                let minY = Math.min(...points.map(p => p[1]));
-                let maxX = Math.max(...points.map(p => p[0]));
-                let maxY = Math.max(...points.map(p => p[1]));
-                
-                plateDiv.style.left = `${minX}px`;
-                plateDiv.style.top = `${minY}px`;
-                plateDiv.style.width = `${maxX - minX}px`;
-                plateDiv.style.height = `${maxY - minY}px`;
-                
-                // Create a div for the license text
-                const textDiv = document.createElement('div');
-                textDiv.className = 'license-text';
-                textDiv.style.left = `${minX}px`;
-                textDiv.style.top = `${maxY + 2}px`;
-                textDiv.textContent = `${plate.license_number} (${(plate.confidence * 100).toFixed(0)}%)`;
-                
-                imgMask.appendChild(plateDiv);
-                imgMask.appendChild(textDiv);
-            }
-        }
-
-        function _MID_showVehicles(vehicles) {
-            const imgPreview = document.getElementById('imgPreview');
-            const imgMask = document.getElementById('imgMask');
-            const imgWidth = imgPreview.clientWidth;
-            const imgHeight = imgPreview.clientHeight;
-            const originalWidth = imgPreview.naturalWidth;
-            const originalHeight = imgPreview.naturalHeight;
-            
-            // Scale factor to map coordinates from original image to displayed image
-            const scaleX = imgWidth / originalWidth;
-            const scaleY = imgHeight / originalHeight;
-            
-            for (const vehicle of vehicles) {
-                const box = vehicle.box;
-                
-                // Create a div for the vehicle boundary
-                const vehicleDiv = document.createElement('div');
-                vehicleDiv.className = 'vehicle';
-                
-                const x1 = box[0] * scaleX;
-                const y1 = box[1] * scaleY;
-                const x2 = box[2] * scaleX;
-                const y2 = box[3] * scaleY;
-                
-                vehicleDiv.style.left = `${x1}px`;
-                vehicleDiv.style.top = `${y1}px`;
-                vehicleDiv.style.width = `${x2 - x1}px`;
-                vehicleDiv.style.height = `${y2 - y1}px`;
-                
-                // Create a div for the vehicle make/model
-                const textDiv = document.createElement('div');
-                textDiv.className = 'vehicle-text';
-                textDiv.style.left = `${x1}px`;
-                textDiv.style.top = `${y1 - 20}px`;
-                textDiv.textContent = `${vehicle.make} ${vehicle.model} (${(vehicle.confidence * 100).toFixed(0)}%)`;
-                
-                imgMask.appendChild(vehicleDiv);
-                imgMask.appendChild(textDiv);
-            }
-        }
+                // showResultsImage(images[0]);
+                showResultsBoundingBoxes(data.predictions, false);
+                showPredictionSummary(data, false)
+            };
+		}
 // END EXPLORER SCRIPT
     </script>
 </div>

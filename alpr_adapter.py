@@ -2,6 +2,7 @@
 import os
 import sys
 import time
+import json
 
 # For PyTorch on Apple silicon
 os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
@@ -131,7 +132,8 @@ class ALPR_adapter(ModuleRunner):
             response = self._detect_license_plate(img, plate_threshold)
 
             with open("log.txt", "a") as text_file:
-                text_file.write(str(response) + "\n" + "\n")
+                json.dump(response, text_file, indent=2)
+                text_file.write("\n\n")
             
 
         except Exception as ex:
@@ -183,31 +185,23 @@ class ALPR_adapter(ModuleRunner):
                     # Only include plates with confidence above threshold
                     if plate["confidence"] >= threshold:
                         plate_data = {
-                            "license_number": plate["license_number"],
                             "confidence": plate["confidence"],
                             "is_day_plate": plate["is_day_plate"],
+                            "label": plate["license_number"],
+                            "plate": plate["license_number"],
                             "coordinates": plate["corners"],
-                            "characters": []
                         }
                         
                         if "state" in plate:
                             plate_data["state"] = plate["state"]
                             plate_data["state_confidence"] = plate["state_confidence"]
-                        
-                        # Add character details
-                        for char_info in plate["characters"]:
-                            plate_data["characters"].append({
-                                "char": char_info["char"],
-                                "confidence": char_info["confidence"],
-                                "box": char_info["box"]
-                            })
-                            
+                                                
                         plates.append(plate_data)
             
             # Update statistics
             self._plates_detected += len(plates)
             for plate in plates:
-                license_num = plate["license_number"]
+                license_num = plate["label"]
                 if license_num not in self._histogram:
                     self._histogram[license_num] = 1
                 else:
@@ -217,17 +211,17 @@ class ALPR_adapter(ModuleRunner):
             if len(plates) > 0:
                 message = f"Found {len(plates)} license plates"
                 if len(plates) <= 3:
-                    message += ": " + ", ".join([p["license_number"] for p in plates])
+                    message += ": " + ", ".join([p["label"] for p in plates])
             else:
                 message = "No license plates detected"
                 
             return {
                 "success": True,
-                "message": message,
-                "count": len(plates),
-                "plates": plates,
                 "processMs": int((time.perf_counter() - start_process_time) * 1000),
-                "inferenceMs": inferenceMs
+                "inferenceMs": inferenceMs,
+                "predictions": plates,
+                "message": message,
+                "count": len(plates)
             }
             
         except Exception as ex:

@@ -1,208 +1,807 @@
-{'success': True, 'message': 'Found 1 license plates: DDC9398', 'count': 1, 'plates': [{'license_number': 'DDC9398', 'confidence': 0.9896551966667175, 'is_day_plate': True, 'coordinates': [[436.1351623535156, 323.02581787109375], [561.5869140625, 341.978759765625], [552.450439453125, 400.4654235839844], [432.5942077636719, 381.1939697265625]], 'characters': [{'char': 'D', 'confidence': 0.9462882876396179, 'box': [26, 0, 57, 34]}, {'char': 'D', 'confidence': 0.9863709807395935, 'box': [50, 0, 80, 34]}, {'char': 'C', 'confidence': 0.9973904490470886, 'box': [73, 0, 101, 35]}, {'char': '9', 'confidence': 0.9999608993530273, 'box': [119, 2, 149, 37]}, {'char': '3', 'confidence': 0.9999144077301025, 'box': [142, 2, 170, 38]}, {'char': '9', 'confidence': 0.9997959733009338, 'box': [166, 3, 191, 39]}, {'char': '8', 'confidence': 0.9978653788566589, 'box': [188, 4, 215, 40]}]}], 'processMs': 2166, 'inferenceMs': 2155}
-
-{'success': True, 'message': 'Found 1 license plates: DDC9398', 'count': 1, 'plates': [{'license_number': 'DDC9398', 'confidence': 0.9896551966667175, 'is_day_plate': True, 'coordinates': [[436.1351623535156, 323.02581787109375], [561.5869140625, 341.978759765625], [552.450439453125, 400.4654235839844], [432.5942077636719, 381.1939697265625]], 'characters': [{'char': 'D', 'confidence': 0.9462882876396179, 'box': [26, 0, 57, 34]}, {'char': 'D', 'confidence': 0.9863709807395935, 'box': [50, 0, 80, 34]}, {'char': 'C', 'confidence': 0.9973904490470886, 'box': [73, 0, 101, 35]}, {'char': '9', 'confidence': 0.9999608993530273, 'box': [119, 2, 149, 37]}, {'char': '3', 'confidence': 0.9999144077301025, 'box': [142, 2, 170, 38]}, {'char': '9', 'confidence': 0.9997959733009338, 'box': [166, 3, 191, 39]}, {'char': '8', 'confidence': 0.9978653788566589, 'box': [188, 4, 215, 40]}]}], 'processMs': 110, 'inferenceMs': 105}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 102, 'inferenceMs': 90}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 238, 'inferenceMs': 225}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 164, 'inferenceMs': 152}
-
-{'success': True, 'message': 'Found 1 license plates: DH3913', 'count': 1, 'plates': [{'license_number': 'DH3913', 'confidence': 0.712634320060412, 'is_day_plate': True, 'coordinates': [[772.0676879882812, 660.9501953125], [887.4419555664062, 676.9469604492188], [879.3208618164062, 730.9037475585938], [762.9390869140625, 716.8956909179688]], 'characters': [{'char': 'D', 'confidence': 0.8131995797157288, 'box': [28, 16, 55, 47]}, {'char': 'H', 'confidence': 0.16375991702079773, 'box': [54, 16, 85, 47]}, {'char': '3', 'confidence': 0.9965483546257019, 'box': [115, 16, 139, 46]}, {'char': '9', 'confidence': 0.999711811542511, 'box': [137, 15, 160, 46]}, {'char': '1', 'confidence': 0.30295366048812866, 'box': [157, 14, 179, 46]}, {'char': '3', 'confidence': 0.9996325969696045, 'box': [176, 15, 205, 45]}]}], 'processMs': 322, 'inferenceMs': 312}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 205, 'inferenceMs': 192}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 226, 'inferenceMs': 215}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 242, 'inferenceMs': 226}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 276, 'inferenceMs': 266}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 311, 'inferenceMs': 287}
-
-{'success': True, 'message': 'Found 1 license plates: 33', 'count': 1, 'plates': [{'license_number': '33', 'confidence': 0.9837006628513336, 'is_day_plate': True, 'coordinates': [[291.5853576660156, 687.0767211914062], [408.41455078125, 705.2251586914062], [398.7640075683594, 760.6083374023438], [283.4746398925781, 745.4174194335938]], 'characters': [{'char': '3', 'confidence': 0.9765086770057678, 'box': [115, 14, 148, 47]}, {'char': '3', 'confidence': 0.9908926486968994, 'box': [179, 13, 218, 47]}]}], 'processMs': 346, 'inferenceMs': 333}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 323, 'inferenceMs': 312}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 349, 'inferenceMs': 342}
-
-{'success': True, 'message': 'Found 1 license plates: DL393', 'count': 1, 'plates': [{'license_number': 'DL393', 'confidence': 0.8798725008964539, 'is_day_plate': True, 'coordinates': [[618.5889282226562, 670.297607421875], [729.8477172851562, 687.7566528320312], [721.010986328125, 739.5789794921875], [608.2202758789062, 724.7177734375]], 'characters': [{'char': 'D', 'confidence': 0.9370631575584412, 'box': [26, 14, 55, 47]}, {'char': 'L', 'confidence': 0.5473535656929016, 'box': [51, 15, 83, 46]}, {'char': '3', 'confidence': 0.924324095249176, 'box': [114, 13, 142, 45]}, {'char': '9', 'confidence': 0.9987346529960632, 'box': [136, 12, 165, 45]}, {'char': '3', 'confidence': 0.9918870329856873, 'box': [177, 12, 210, 44]}]}], 'processMs': 396, 'inferenceMs': 387}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 303, 'inferenceMs': 287}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 322, 'inferenceMs': 311}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 254, 'inferenceMs': 242}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 270, 'inferenceMs': 263}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 104, 'inferenceMs': 96}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 114, 'inferenceMs': 98}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 142, 'inferenceMs': 125}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 179, 'inferenceMs': 170}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 192, 'inferenceMs': 182}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 195, 'inferenceMs': 186}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 248, 'inferenceMs': 228}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 274, 'inferenceMs': 258}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 278, 'inferenceMs': 271}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 242, 'inferenceMs': 230}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 263, 'inferenceMs': 254}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 197, 'inferenceMs': 185}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 227, 'inferenceMs': 216}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 150, 'inferenceMs': 141}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 163, 'inferenceMs': 152}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 100, 'inferenceMs': 91}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 114, 'inferenceMs': 108}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 48, 'inferenceMs': 41}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 128, 'inferenceMs': 110}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 133, 'inferenceMs': 119}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 168, 'inferenceMs': 158}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 185, 'inferenceMs': 173}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 210, 'inferenceMs': 196}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 242, 'inferenceMs': 234}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 245, 'inferenceMs': 228}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 262, 'inferenceMs': 246}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 297, 'inferenceMs': 283}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 316, 'inferenceMs': 306}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 273, 'inferenceMs': 262}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 293, 'inferenceMs': 284}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 221, 'inferenceMs': 210}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 238, 'inferenceMs': 231}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 168, 'inferenceMs': 157}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 185, 'inferenceMs': 178}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5240, 'inferenceMs': 5231}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 180, 'inferenceMs': 173}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5366, 'inferenceMs': 5354}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5630, 'inferenceMs': 5617}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5134, 'inferenceMs': 5124}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5536, 'inferenceMs': 5525}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5314, 'inferenceMs': 5306}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5706, 'inferenceMs': 5699}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5537, 'inferenceMs': 5527}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5733, 'inferenceMs': 5725}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5566, 'inferenceMs': 5556}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5368, 'inferenceMs': 5359}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5642, 'inferenceMs': 5633}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5430, 'inferenceMs': 5410}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5510, 'inferenceMs': 5494}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5907, 'inferenceMs': 5892}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 5892, 'inferenceMs': 5886}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 105, 'inferenceMs': 98}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 116, 'inferenceMs': 103}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 144, 'inferenceMs': 130}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 183, 'inferenceMs': 174}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 201, 'inferenceMs': 195}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 669, 'inferenceMs': 664}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 887, 'inferenceMs': 881}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 980, 'inferenceMs': 974}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 1030, 'inferenceMs': 1021}
-
-{'success': True, 'message': 'Found 1 license plates: FELULYA', 'count': 1, 'plates': [{'license_number': 'FELULYA', 'confidence': 0.8440922924450466, 'is_day_plate': True, 'coordinates': [[121.62248992919922, 691.61962890625], [239.6917266845703, 707.723876953125], [233.3590850830078, 767.4628295898438], [113.44149780273438, 749.9678344726562]], 'characters': [{'char': 'F', 'confidence': 0.9958900809288025, 'box': [32, 13, 61, 47]}, {'char': 'E', 'confidence': 0.9696317315101624, 'box': [59, 12, 87, 47]}, {'char': 'L', 'confidence': 0.7549149394035339, 'box': [85, 12, 110, 47]}, {'char': 'U', 'confidence': 0.735075056552887, 'box': [108, 12, 135, 46]}, {'char': 'L', 'confidence': 0.454997718334198, 'box': [133, 12, 160, 46]}, {'char': 'Y', 'confidence': 0.9981676340103149, 'box': [157, 11, 182, 46]}, {'char': 'A', 'confidence': 0.9999688863754272, 'box': [180, 10, 209, 46]}]}], 'processMs': 2698, 'inferenceMs': 2688}
-
-{'success': True, 'message': 'Found 1 license plates: FELULAY', 'count': 1, 'plates': [{'license_number': 'FELULAY', 'confidence': 0.8445449684347425, 'is_day_plate': True, 'coordinates': [[520.5648193359375, 669.8768920898438], [638.4560546875, 687.6213989257812], [630.7314453125, 743.2593994140625], [510.0309143066406, 727.2636108398438]], 'characters': [{'char': 'F', 'confidence': 0.9952072501182556, 'box': [42, 15, 66, 47]}, {'char': 'E', 'confidence': 0.8098933696746826, 'box': [65, 14, 90, 47]}, {'char': 'L', 'confidence': 0.48511406779289246, 'box': [89, 14, 113, 46]}, {'char': 'U', 'confidence': 0.9950056672096252, 'box': [112, 14, 136, 46]}, {'char': 'L', 'confidence': 0.6288231015205383, 'box': [134, 13, 156, 46]}, {'char': 'A', 'confidence': 0.9999622106552124, 'box': [179, 12, 205, 46]}, {'char': 'Y', 'confidence': 0.997809112071991, 'box': [156, 12, 178, 46]}]}], 'processMs': 2693, 'inferenceMs': 2686}
-
-{'success': True, 'message': 'Found 1 license plates: FF1ULYA', 'count': 1, 'plates': [{'license_number': 'FF1ULYA', 'confidence': 0.911437954221453, 'is_day_plate': True, 'coordinates': [[709.835693359375, 657.7181396484375], [826.3496704101562, 676.2091674804688], [818.3165283203125, 729.3255004882812], [703.3158569335938, 715.5701904296875]], 'characters': [{'char': 'F', 'confidence': 0.9955457448959351, 'box': [39, 16, 61, 49]}, {'char': 'F', 'confidence': 0.9657355546951294, 'box': [62, 16, 84, 49]}, {'char': '1', 'confidence': 0.45661598443984985, 'box': [85, 16, 107, 49]}, {'char': 'U', 'confidence': 0.9955195188522339, 'box': [109, 16, 133, 49]}, {'char': 'L', 'confidence': 0.9685280323028564, 'box': [132, 16, 155, 49]}, {'char': 'Y', 'confidence': 0.9981285929679871, 'box': [155, 15, 177, 48]}, {'char': 'A', 'confidence': 0.9999922513961792, 'box': [179, 14, 202, 49]}]}], 'processMs': 2714, 'inferenceMs': 2708}
-
-{'success': True, 'message': 'Found 1 license plates: FF1ULYA', 'count': 1, 'plates': [{'license_number': 'FF1ULYA', 'confidence': 0.9401492476463318, 'is_day_plate': True, 'coordinates': [[803.3381958007812, 655.4710693359375], [909.0203247070312, 672.6712646484375], [905.136474609375, 725.2703857421875], [792.7105102539062, 709.853515625]], 'characters': [{'char': 'F', 'confidence': 0.9918530583381653, 'box': [39, 15, 62, 46]}, {'char': 'F', 'confidence': 0.9743438959121704, 'box': [63, 15, 87, 46]}, {'char': '1', 'confidence': 0.7362061142921448, 'box': [87, 14, 109, 46]}, {'char': 'U', 'confidence': 0.9901435375213623, 'box': [111, 13, 134, 45]}, {'char': 'L', 'confidence': 0.8915140628814697, 'box': [134, 13, 156, 45]}, {'char': 'Y', 'confidence': 0.996985137462616, 'box': [156, 12, 181, 44]}, {'char': 'A', 'confidence': 0.999998927116394, 'box': [180, 12, 203, 45]}]}], 'processMs': 2767, 'inferenceMs': 2761}
-
-{'success': True, 'message': 'Found 1 license plates: FFIULAY', 'count': 1, 'plates': [{'license_number': 'FFIULAY', 'confidence': 0.8557737384523664, 'is_day_plate': True, 'coordinates': [[978.4871826171875, 645.29736328125], [1096.887451171875, 661.907470703125], [1092.408447265625, 715.944091796875], [972.9982299804688, 701.9117431640625]], 'characters': [{'char': 'F', 'confidence': 0.9902295470237732, 'box': [37, 15, 60, 45]}, {'char': 'F', 'confidence': 0.5084534287452698, 'box': [59, 15, 80, 45]}, {'char': 'I', 'confidence': 0.58025062084198, 'box': [80, 14, 101, 45]}, {'char': 'U', 'confidence': 0.9533109068870544, 'box': [102, 15, 123, 45]}, {'char': 'L', 'confidence': 0.9655724763870239, 'box': [123, 14, 145, 45]}, {'char': 'A', 'confidence': 0.9999336004257202, 'box': [166, 13, 188, 45]}, {'char': 'Y', 'confidence': 0.9926655888557434, 'box': [145, 13, 166, 45]}]}], 'processMs': 2710, 'inferenceMs': 2698}
-
-{'success': True, 'message': 'Found 1 license plates: FFLULYA', 'count': 1, 'plates': [{'license_number': 'FFLULYA', 'confidence': 0.9126884681837899, 'is_day_plate': True, 'coordinates': [[423.9309997558594, 672.1801147460938], [540.183837890625, 691.6212768554688], [530.69091796875, 745.384521484375], [415.6307678222656, 730.3674926757812]], 'characters': [{'char': 'F', 'confidence': 0.9974429607391357, 'box': [37, 15, 63, 49]}, {'char': 'F', 'confidence': 0.946765124797821, 'box': [61, 15, 87, 48]}, {'char': 'L', 'confidence': 0.9771983623504639, 'box': [86, 14, 111, 48]}, {'char': 'U', 'confidence': 0.9740787148475647, 'box': [109, 14, 135, 48]}, {'char': 'L', 'confidence': 0.4949747323989868, 'box': [133, 13, 157, 48]}, {'char': 'Y', 'confidence': 0.9983687996864319, 'box': [155, 13, 181, 48]}, {'char': 'A', 'confidence': 0.9999905824661255, 'box': [181, 13, 208, 48]}]}], 'processMs': 2935, 'inferenceMs': 2928}
-
-{'success': True, 'message': 'Found 1 license plates: FE1ULYA', 'count': 1, 'plates': [{'license_number': 'FE1ULYA', 'confidence': 0.7574279606342316, 'is_day_plate': True, 'coordinates': [[223.8792266845703, 680.8090209960938], [339.0630798339844, 697.082763671875], [332.4111633300781, 759.0112915039062], [213.99485778808594, 742.0742797851562]], 'characters': [{'char': 'F', 'confidence': 0.9937123656272888, 'box': [38, 18, 69, 50]}, {'char': 'E', 'confidence': 0.694179356098175, 'box': [67, 17, 96, 51]}, {'char': '1', 'confidence': 0.347921222448349, 'box': [93, 17, 121, 51]}, {'char': 'U', 'confidence': 0.9469882845878601, 'box': [120, 17, 147, 51]}, {'char': 'L', 'confidence': 0.3209788203239441, 'box': [145, 16, 171, 50]}, {'char': 'Y', 'confidence': 0.9982331991195679, 'box': [170, 16, 196, 50]}, {'char': 'A', 'confidence': 0.999982476234436, 'box': [195, 15, 222, 49]}]}], 'processMs': 2953, 'inferenceMs': 2946}
-
-{'success': True, 'message': 'Found 1 license plates: IFEUALY', 'count': 1, 'plates': [{'license_number': 'IFEUALY', 'confidence': 0.7863457075187138, 'is_day_plate': True, 'coordinates': [[1062.6944580078125, 638.6118774414062], [1176.3779296875, 654.3429565429688], [1173.660888671875, 703.2198486328125], [1060.1220703125, 688.8441772460938]], 'characters': [{'char': 'I', 'confidence': 0.5052585601806641, 'box': [77, 16, 97, 47]}, {'char': 'F', 'confidence': 0.9906952381134033, 'box': [36, 17, 58, 47]}, {'char': 'E', 'confidence': 0.5579565763473511, 'box': [57, 16, 79, 47]}, {'char': 'U', 'confidence': 0.9911760091781616, 'box': [98, 16, 118, 47]}, {'char': 'A', 'confidence': 0.9999996423721313, 'box': [156, 14, 178, 46]}, {'char': 'L', 'confidence': 0.4600768983364105, 'box': [117, 16, 136, 47]}, {'char': 'Y', 'confidence': 0.9992570281028748, 'box': [137, 15, 157, 46]}]}], 'processMs': 2740, 'inferenceMs': 2733}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 87, 'inferenceMs': 75}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 271, 'inferenceMs': 264}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 378, 'inferenceMs': 371}
-
-{'success': True, 'message': 'Found 1 license plates: FV7930', 'count': 1, 'plates': [{'license_number': 'FV7930', 'confidence': 0.9578235944112142, 'is_day_plate': True, 'coordinates': [[596.2181396484375, 515.83935546875], [698.8584594726562, 534.4227905273438], [693.5242309570312, 579.4398193359375], [585.744873046875, 565.7682495117188]], 'characters': [{'char': 'F', 'confidence': 0.8349507451057434, 'box': [11, 11, 42, 46]}, {'char': 'V', 'confidence': 0.9785459637641907, 'box': [52, 10, 82, 46]}, {'char': '7', 'confidence': 0.9412776231765747, 'box': [95, 9, 122, 45]}, {'char': '9', 'confidence': 0.9994745850563049, 'box': [118, 8, 144, 43]}, {'char': '3', 'confidence': 0.9995918869972229, 'box': [141, 8, 168, 44]}, {'char': '0', 'confidence': 0.9931007623672485, 'box': [164, 8, 191, 44]}]}], 'processMs': 443, 'inferenceMs': 434}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 425, 'inferenceMs': 418}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 405, 'inferenceMs': 398}
-
-{'success': True, 'message': 'Found 1 license plates: FIV1930', 'count': 1, 'plates': [{'license_number': 'FIV1930', 'confidence': 0.819599564586367, 'is_day_plate': True, 'coordinates': [[724.5912475585938, 516.3743286132812], [832.3876342773438, 532.7637329101562], [821.4431762695312, 579.187255859375], [714.2455444335938, 563.3419189453125]], 'characters': [{'char': 'F', 'confidence': 0.989595353603363, 'box': [11, 7, 43, 39]}, {'char': 'I', 'confidence': 0.7040663957595825, 'box': [31, 7, 58, 39]}, {'char': 'V', 'confidence': 0.6679897308349609, 'box': [49, 5, 82, 38]}, {'char': '1', 'confidence': 0.3812554180622101, 'box': [90, 5, 118, 38]}, {'char': '9', 'confidence': 0.9996721744537354, 'box': [111, 4, 137, 37]}, {'char': '3', 'confidence': 0.9990400671958923, 'box': [131, 4, 158, 37]}, {'char': '0', 'confidence': 0.9955778121948242, 'box': [150, 4, 178, 36]}]}], 'processMs': 551, 'inferenceMs': 542}
-
-{'success': True, 'message': 'Found 1 license plates: FV7930', 'count': 1, 'plates': [{'license_number': 'FV7930', 'confidence': 0.9280866086483002, 'is_day_plate': True, 'coordinates': [[1091.9188232421875, 502.4083557128906], [1202.625244140625, 517.0499877929688], [1190.18310546875, 564.8939819335938], [1082.0992431640625, 550.193115234375]], 'characters': [{'char': 'F', 'confidence': 0.979770302772522, 'box': [9, 9, 39, 40]}, {'char': 'V', 'confidence': 0.6454491019248962, 'box': [47, 7, 79, 40]}, {'char': '7', 'confidence': 0.9928615689277649, 'box': [87, 7, 114, 39]}, {'char': '9', 'confidence': 0.9997709393501282, 'box': [108, 7, 133, 39]}, {'char': '3', 'confidence': 0.99825519323349, 'box': [127, 7, 153, 38]}, {'char': '0', 'confidence': 0.9524125456809998, 'box': [146, 7, 173, 37]}]}], 'processMs': 570, 'inferenceMs': 563}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 475, 'inferenceMs': 465}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 507, 'inferenceMs': 500}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 453, 'inferenceMs': 446}
-
-{'success': True, 'message': 'Found 1 license plates: FN7930', 'count': 1, 'plates': [{'license_number': 'FN7930', 'confidence': 0.8989994525909424, 'is_day_plate': True, 'coordinates': [[182.85939025878906, 532.5648803710938], [291.5982360839844, 551.3746337890625], [284.9422302246094, 599.2825317382812], [166.45814514160156, 584.0242309570312]], 'characters': [{'char': 'F', 'confidence': 0.6209427714347839, 'box': [14, 8, 62, 45]}, {'char': 'N', 'confidence': 0.9151143431663513, 'box': [53, 8, 96, 45]}, {'char': '7', 'confidence': 0.9014265537261963, 'box': [102, 6, 137, 44]}, {'char': '9', 'confidence': 0.9974519610404968, 'box': [122, 4, 157, 43]}, {'char': '3', 'confidence': 0.9981440305709839, 'box': [148, 4, 182, 43]}, {'char': '0', 'confidence': 0.960917055606842, 'box': [171, 4, 206, 43]}]}], 'processMs': 564, 'inferenceMs': 554}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 470, 'inferenceMs': 462}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 365, 'inferenceMs': 357}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 373, 'inferenceMs': 364}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 308, 'inferenceMs': 297}
-
-{'success': True, 'message': 'No license plates detected', 'count': 0, 'plates': [], 'processMs': 326, 'inferenceMs': 320}
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 203,
+  "inferenceMs": 194,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 221,
+  "inferenceMs": 210,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 260,
+  "inferenceMs": 254,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 272,
+  "inferenceMs": 264,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 360,
+  "inferenceMs": 349,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 394,
+  "inferenceMs": 386,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 363,
+  "inferenceMs": 357,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 381,
+  "inferenceMs": 374,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 288,
+  "inferenceMs": 276,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 306,
+  "inferenceMs": 297,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 208,
+  "inferenceMs": 198,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 218,
+  "inferenceMs": 212,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 111,
+  "inferenceMs": 100,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 122,
+  "inferenceMs": 114,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 411,
+  "inferenceMs": 401,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 463,
+  "inferenceMs": 456,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 394,
+  "inferenceMs": 387,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 422,
+  "inferenceMs": 413,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 344,
+  "inferenceMs": 333,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 363,
+  "inferenceMs": 356,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 323,
+  "inferenceMs": 317,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 336,
+  "inferenceMs": 329,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 297,
+  "inferenceMs": 291,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 300,
+  "inferenceMs": 294,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 109,
+  "inferenceMs": 102,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 129,
+  "inferenceMs": 115,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 171,
+  "inferenceMs": 159,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 193,
+  "inferenceMs": 182,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 200,
+  "inferenceMs": 189,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 318,
+  "inferenceMs": 310,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 339,
+  "inferenceMs": 333,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 281,
+  "inferenceMs": 272,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 293,
+  "inferenceMs": 283,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 241,
+  "inferenceMs": 230,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 260,
+  "inferenceMs": 254,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 123,
+  "inferenceMs": 115,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 147,
+  "inferenceMs": 129,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 200,
+  "inferenceMs": 188,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 225,
+  "inferenceMs": 214,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 255,
+  "inferenceMs": 243,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 282,
+  "inferenceMs": 274,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 298,
+  "inferenceMs": 287,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 329,
+  "inferenceMs": 322,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 366,
+  "inferenceMs": 360,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 298,
+  "inferenceMs": 289,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 321,
+  "inferenceMs": 314,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 249,
+  "inferenceMs": 235,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 280,
+  "inferenceMs": 267,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 167,
+  "inferenceMs": 156,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 185,
+  "inferenceMs": 176,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 110,
+  "inferenceMs": 103,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 115,
+  "inferenceMs": 110,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 102,
+  "inferenceMs": 87,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 147,
+  "inferenceMs": 139,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 187,
+  "inferenceMs": 178,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 222,
+  "inferenceMs": 208,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 253,
+  "inferenceMs": 246,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 277,
+  "inferenceMs": 270,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 297,
+  "inferenceMs": 290,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 356,
+  "inferenceMs": 349,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 154,
+  "inferenceMs": 138,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 272,
+  "inferenceMs": 262,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 421,
+  "inferenceMs": 414,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 454,
+  "inferenceMs": 446,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 472,
+  "inferenceMs": 465,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 501,
+  "inferenceMs": 490,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 534,
+  "inferenceMs": 526,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 558,
+  "inferenceMs": 549,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 591,
+  "inferenceMs": 580,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": false,
+  "error": "Error detecting license plates: 'license_number'"
+}
+
+{
+  "success": true,
+  "processMs": 539,
+  "inferenceMs": 532,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 552,
+  "inferenceMs": 546,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 475,
+  "inferenceMs": 469,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
+
+{
+  "success": true,
+  "processMs": 396,
+  "inferenceMs": 391,
+  "predictions": [],
+  "message": "No license plates detected",
+  "count": 0
+}
 
