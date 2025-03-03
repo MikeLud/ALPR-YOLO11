@@ -566,8 +566,8 @@ class ALPRSystem:
                         idx = int(indices[i].item())
                         conf = float(values[i].item())
                         
-                        # Only include predictions with confidence > 0.25
-                        if conf >= 0.25:
+                        # Only include predictions with confidence > 0.02
+                        if conf >= 0.02:
                             character = char_names[idx]
                             top_predictions.append((character, conf))
                 except Exception as e:
