@@ -3,7 +3,7 @@
 
     "ALPRYOLOv8": {
       "Name": "License Plate Recognition (ALPR)",
-      "Version": "1.0.0",
+      "Version": "1.1.0",
 
       "PublishingInfo" : {
         "Description" : "Provides Automatic License Plate Recognition (ALPR) using YOLOv8 models",
@@ -39,7 +39,19 @@
         "VEHICLE_DETECTOR_CONFIDENCE": "0.45",
         "VEHICLE_CLASSIFIER_CONFIDENCE": "0.45",
         "PLATE_ASPECT_RATIO"        : "4.0",
-        "CORNER_DILATION_PIXELS"    : "5"
+        "CORNER_DILATION_PIXELS"    : "5",
+        "OPTIMIZATION_LEVEL"        : "1",
+        "ENABLE_TENSORRT"           : "False",
+        "ENABLE_ONNX"               : "False",
+        "ONNX_PROVIDER"             : "auto",
+        "ONNX_MODEL_PATH"           : "%CURRENT_MODULE_PATH%/models/onnx",
+        "HALF_PRECISION"            : "True",
+        "INPUT_RESOLUTION"          : "640",
+        "ENABLE_CACHING"            : "True",
+        "CACHE_SIZE"                : "100",
+        "ENABLE_ADAPTIVE_PROCESSING": "True", 
+        "ENABLE_BATCH_PROCESSING"   : "True",
+        "MAX_THREAD_COUNT"          : "4"
       },
 
       "GpuOptions" : {
@@ -52,6 +64,7 @@
       "InstallOptions" : {
         "Platforms":      [ "all" ],
         "ModuleReleases": [
+          { "ModuleVersion": "1.1.0", "ServerVersionRange": [ "2.9.4", "" ], "ReleaseDate": "2025-03-02", "ReleaseNotes": "Improved performance with optimizations", "Importance": "Major" },
           { "ModuleVersion": "1.0.0", "ServerVersionRange": [ "2.9.4", "" ], "ReleaseDate": "2025-02-28", "ReleaseNotes": "Initial Release", "Importance": "Major" }
         ]
       },
@@ -94,6 +107,64 @@
             { "Label": "Standard",  "Setting": "CORNER_DILATION_PIXELS", "Value": "5" },
             { "Label": "Enhanced",  "Setting": "CORNER_DILATION_PIXELS", "Value": "10" },
             { "Label": "Maximum",   "Setting": "CORNER_DILATION_PIXELS", "Value": "15" }
+          ]
+        },
+        {
+          "Label": "Performance Optimization",
+          "Options": [
+            { "Label": "Balanced (Default)",    "Setting": "OPTIMIZATION_LEVEL", "Value": "1" },
+            { "Label": "Speed Optimized",       "Setting": "OPTIMIZATION_LEVEL", "Value": "2" },
+            { "Label": "Maximum Speed",         "Setting": "OPTIMIZATION_LEVEL", "Value": "3" }
+          ]
+        },
+        {
+          "Label": "Input Resolution",
+          "Options": [
+            { "Label": "320x320 (Fastest)",    "Setting": "INPUT_RESOLUTION", "Value": "320" },
+            { "Label": "480x480 (Fast)",       "Setting": "INPUT_RESOLUTION", "Value": "480" },
+            { "Label": "640x640 (Standard)",   "Setting": "INPUT_RESOLUTION", "Value": "640" },
+            { "Label": "720x720 (Accurate)",   "Setting": "INPUT_RESOLUTION", "Value": "720" }
+          ]
+        },
+        {
+          "Label": "GPU Acceleration",
+          "Options": [
+            { "Label": "Enable TensorRT (NVIDIA GPUs)",  "Setting": "ENABLE_TENSORRT", "Value": "True" },
+            { "Label": "Disable TensorRT",               "Setting": "ENABLE_TENSORRT", "Value": "False" },
+            { "Label": "Enable Half Precision",          "Setting": "HALF_PRECISION", "Value": "True" },
+            { "Label": "Disable Half Precision",         "Setting": "HALF_PRECISION", "Value": "False" }
+          ]
+        },
+        {
+          "Label": "ONNX Acceleration",
+          "Options": [
+            { "Label": "Enable ONNX",                    "Setting": "ENABLE_ONNX", "Value": "True" },
+            { "Label": "Disable ONNX",                   "Setting": "ENABLE_ONNX", "Value": "False" },
+            { "Label": "ONNX - Auto Provider",           "Setting": "ONNX_PROVIDER", "Value": "auto" },
+            { "Label": "ONNX - CPU Provider",            "Setting": "ONNX_PROVIDER", "Value": "cpu" },
+            { "Label": "ONNX - CUDA Provider",           "Setting": "ONNX_PROVIDER", "Value": "cuda" },
+            { "Label": "ONNX - DML Provider (DirectML)", "Setting": "ONNX_PROVIDER", "Value": "dml" },
+            { "Label": "ONNX - CoreML Provider (Apple)", "Setting": "ONNX_PROVIDER", "Value": "coreml" }
+          ]
+        },
+        {
+          "Label": "Advanced Settings",
+          "Options": [
+            { "Label": "Enable Result Caching",        "Setting": "ENABLE_CACHING", "Value": "True" },
+            { "Label": "Disable Result Caching",       "Setting": "ENABLE_CACHING", "Value": "False" },
+            { "Label": "Enable Adaptive Processing",   "Setting": "ENABLE_ADAPTIVE_PROCESSING", "Value": "True" },
+            { "Label": "Disable Adaptive Processing",  "Setting": "ENABLE_ADAPTIVE_PROCESSING", "Value": "False" },
+            { "Label": "Enable Batch Processing",      "Setting": "ENABLE_BATCH_PROCESSING", "Value": "True" },
+            { "Label": "Disable Batch Processing",     "Setting": "ENABLE_BATCH_PROCESSING", "Value": "False" }
+          ]
+        },
+        {
+          "Label": "Threads",
+          "Options": [
+            { "Label": "2 Threads", "Setting": "MAX_THREAD_COUNT", "Value": "2" },
+            { "Label": "4 Threads", "Setting": "MAX_THREAD_COUNT", "Value": "4" },
+            { "Label": "8 Threads", "Setting": "MAX_THREAD_COUNT", "Value": "8" },
+            { "Label": "16 Threads", "Setting": "MAX_THREAD_COUNT", "Value": "16" }
           ]
         },
         {

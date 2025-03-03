@@ -16,6 +16,7 @@ fi
 
 # Create directories if they don't exist
 mkdir -p "models"
+mkdir -p "models/onnx"  # Directory for ONNX models
 mkdir -p "test"
 
 # Copy alpr_system_v205.py to the directory with appropriate naming

@@ -1,4 +1,5 @@
 #! Python3.8
+# CUDA requirements for Linux with CUDA installed
 
 numpy<2.0                       # Installing NumPy, a package for scientific computing
 opencv-python>=4.6.0            # Installing OpenCV, the Open source Computer Vision library
@@ -7,22 +8,25 @@ pyyaml>=5.3.1                   # Installing PyYAML, a library for reading confi
 scipy>=1.4.1                    # Installing SciPy, a library for mathematics, science, and engineering
 tqdm>=4.64.0                    # Installing TDQM, the Fast, Extensible Progress Meter
 
-# CPU specific Torch
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==1.13.0+cpu               # Installing PyTorch, for Tensor computation and Deep neural networks
---extra-index-url https://download.pytorch.org/whl/cpu
-torchvision==0.14.0+cpu         # Installing TorchVision, for Computer Vision based AI
+# For CUDA
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.13.0+cu117             # Installing PyTorch, an open source machine learning framework
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torchvision==0.14.0+cu117       # Installing TorchVision, for working with computer vision models
 
-# Explicitly install ultralytics without optional dependencies
---no-deps
+# Specific version because it's known to work with our code
 ultralytics==8.3.81              # Installing Ultralytics package for YOLO models
 
-# ONNX dependencies for CPU systems
+# Performance optimization libraries
+nvidia-tensorrt>=8.4.0           # TensorRT for GPU acceleration on NVIDIA GPUs
 onnx>=1.13.0                     # ONNX for model optimization and interoperability
-onnxruntime>=1.14.0              # ONNX Runtime for faster inference
+onnxruntime-gpu>=1.14.0          # ONNX Runtime with GPU support for faster inference
+nvidia-cuda-runtime-cu11>=11.7.0 # CUDA Runtime for TensorRT
+nvidia-cudnn-cu11>=8.5.0         # cuDNN for TensorRT
 onnxsim>=0.4.17                  # ONNX simplifier for better performance
+onnx-graphsurgeon>=0.3.25        # ONNX graph surgery for optimization
 
-# System monitoring and performance optimization
+# Memory management
 psutil>=5.9.0                    # Process and system utilities for monitoring
 py-cpuinfo>=9.0.0                # CPU info for adaptive processing
 

@@ -1,4 +1,4 @@
-:: Installation script :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::: Installation script :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
 ::                           ALPR (YOLOv8)
 ::
@@ -13,4 +13,5 @@
 
 :: Create directories if they don't exist
 if not exist "models" mkdir "models"
+if not exist "models\onnx" mkdir "models\onnx"
 if not exist "test" mkdir "test"

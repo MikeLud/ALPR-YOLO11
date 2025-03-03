@@ -32,6 +32,20 @@ class Options:
         self.use_CUDA           = ModuleOptions.getEnvVariable("USE_CUDA", "True").lower() == "true"
         self.use_MPS            = True  # only if available...
         self.use_DirectML       = True  # only if available...
+        
+        # Performance optimization settings
+        self.optimization_level = int(ModuleOptions.getEnvVariable("OPTIMIZATION_LEVEL", "1"))
+        self.enable_tensorrt    = ModuleOptions.getEnvVariable("ENABLE_TENSORRT", "False").lower() == "true"
+        self.enable_onnx        = ModuleOptions.getEnvVariable("ENABLE_ONNX", "False").lower() == "true"
+        self.onnx_provider      = ModuleOptions.getEnvVariable("ONNX_PROVIDER", "auto")
+        self.half_precision     = ModuleOptions.getEnvVariable("HALF_PRECISION", "True").lower() == "true"
+        self.input_resolution   = int(ModuleOptions.getEnvVariable("INPUT_RESOLUTION", "640"))
+        self.enable_caching     = ModuleOptions.getEnvVariable("ENABLE_CACHING", "True").lower() == "true"
+        self.cache_size         = int(ModuleOptions.getEnvVariable("CACHE_SIZE", "100"))
+        self.enable_adaptive_processing = ModuleOptions.getEnvVariable("ENABLE_ADAPTIVE_PROCESSING", "True").lower() == "true"
+        self.enable_batch_processing = ModuleOptions.getEnvVariable("ENABLE_BATCH_PROCESSING", "True").lower() == "true"
+        self.max_thread_count   = int(ModuleOptions.getEnvVariable("MAX_THREAD_COUNT", "4"))
+        self.onnx_model_path    = os.path.normpath(ModuleOptions.getEnvVariable("ONNX_MODEL_PATH", f"{self.models_dir}/onnx"))
 
         # -------------------------------------------------------------------------
         # dump the important variables
@@ -42,3 +56,9 @@ class Options:
             print(f"Debug: USE_CUDA:    {self.use_CUDA}")
             print(f"Debug: ENABLE_STATE_DETECTION: {self.enable_state_detection}")
             print(f"Debug: ENABLE_VEHICLE_DETECTION: {self.enable_vehicle_detection}")
+            print(f"Debug: OPTIMIZATION_LEVEL: {self.optimization_level}")
+            print(f"Debug: ENABLE_TENSORRT: {self.enable_tensorrt}")
+            print(f"Debug: ENABLE_ONNX: {self.enable_onnx}")
+            print(f"Debug: ONNX_PROVIDER: {self.onnx_provider}")
+            print(f"Debug: HALF_PRECISION: {self.half_precision}")
+            print(f"Debug: INPUT_RESOLUTION: {self.input_resolution}")
