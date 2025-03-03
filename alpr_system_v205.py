@@ -648,7 +648,9 @@ class ALPRSystem:
                                                  threshold=self.plate_detector_confidence)
             else:
                 # Using PyTorch/YOLOv8 for inference
-                results = self.plate_detector_model(img_resized, conf=self.plate_detector_confidence, verbose=False)[0]
+                # Add half parameter for consistent half precision usage
+                results = self.plate_detector_model(img_resized, conf=self.plate_detector_confidence, 
+                                                 half=self.half_precision, verbose=False)[0]
         except Exception as e:
             print(f"Error running plate detector model: {e}")
             # Return empty results to avoid breaking the pipeline
@@ -1016,7 +1018,9 @@ class ALPRSystem:
                 result = results[0]
             else:
                 # Using PyTorch/YOLOv8 for inference
-                result = self.state_classifier_model(plate_resized, conf=self.state_classifier_confidence, verbose=False)[0]
+                # Add half parameter for consistent half precision usage
+                result = self.state_classifier_model(plate_resized, conf=self.state_classifier_confidence, 
+                                                  half=self.half_precision, verbose=False)[0]
             
             # Get the predicted class and confidence
             if hasattr(result, 'probs') and hasattr(result.probs, 'top1'):
@@ -1056,7 +1060,9 @@ class ALPRSystem:
                 results = results[0]
             else:
                 # Using PyTorch/YOLOv8 for inference
-                results = self.char_detector_model.predict(plate_resized, conf=self.char_detector_confidence, verbose=False)[0]
+                # Add half parameter for consistent half precision usage
+                results = self.char_detector_model(plate_resized, conf=self.char_detector_confidence, 
+                                               half=self.half_precision, verbose=False)[0]
         except Exception as e:
             print(f"Error detecting characters: {e}")
             return []
@@ -1221,7 +1227,9 @@ class ALPRSystem:
                 results = results[0]
             else:
                 # Using PyTorch/YOLOv8 for inference
-                results = self.char_classifier_model.predict(char_resized, conf=self.char_classifier_confidence, verbose=False)[0]
+                # Add half parameter for consistent half precision usage
+                results = self.char_classifier_model(char_resized, conf=self.char_classifier_confidence, 
+                                                 half=self.half_precision, verbose=False)[0]
         except Exception as e:
             print(f"Error classifying character: {e}")
             return [("?", 0.0)]
@@ -1418,10 +1426,11 @@ class ALPRSystem:
                             state_name = self.model_names.get("state_classifier", {}).get(str(state_idx), f"state_{state_idx}")
                             state_results.append((state_name, confidence))
                     else:
-                        # Run state classifier on batch
+                        # Run state classifier on batch with half precision parameter
                         state_batch_results = self.state_classifier_model(
                             batch_state_images, 
-                            conf=self.state_classifier_confidence, 
+                            conf=self.state_classifier_confidence,
+                            half=self.half_precision, 
                             verbose=False
                         )
                         
@@ -1544,10 +1553,11 @@ class ALPRSystem:
                                 
                             char_classifications.append(top_predictions)
                     else:
-                        # Use PyTorch batch inference
+                        # Use PyTorch batch inference with half precision parameter
                         batch_results = self.char_classifier_model(
                             char_images, 
-                            conf=self.char_classifier_confidence, 
+                            conf=self.char_classifier_confidence,
+                            half=self.half_precision,
                             verbose=False
                         )
                         
@@ -1593,11 +1603,12 @@ class ALPRSystem:
                                     character = char_names[idx]
                                     top_predictions.append((character, conf))
                             
-                            # If no predictions were found
+                            # If no predictions were found or all had low confidence
                             if not top_predictions:
                                 top_predictions.append(("?", 0.0))
                                 
                             char_classifications.append(top_predictions)
+
                 except Exception as e:
                     print(f"Error in batch character classification: {e}")
                     # Fill with defaults

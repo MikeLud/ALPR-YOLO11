@@ -58,9 +58,9 @@ class ALPR_adapter(ModuleRunner):
         self.use_MPS      = self.opts.use_MPS
         self.use_DirectML = self.opts.use_DirectML
 
-        if self.use_CUDA and self.half_precision == 'enable' and \
+        if self.use_CUDA and self.half_precision == True and \
            not self.system_info.hasTorchHalfPrecision:
-            self.half_precision = 'disable'
+            self.half_precision = False
 
         # Initialize the ALPR system once for use across requests
         self.alpr_system = None
