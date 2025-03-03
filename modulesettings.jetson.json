@@ -1,0 +1,13 @@
+{
+  "Modules": {
+    "ALPR": {
+      "LaunchSettings": {
+        "AutoStart": false,
+        "Runtime": "python3.8"
+      },
+      "EnvironmentVariables": {
+        "USE_CUDA": "True"
+      }
+    }
+  }
+}
