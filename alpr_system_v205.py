@@ -178,12 +178,18 @@ class ALPRSystem:
         
         # Prepare model loading arguments
         yolo_args = {"task": "pose", "verbose": False}
-        if half_precision and (device.startswith("cuda") or device == "mps"):
-            yolo_args["half"] = True
+        # Don't use half=True parameter as it's not supported in YOLOv8
         
         # Load plate detector with task='pose' for keypoint detection
         try:
             self.plate_detector_model = YOLO(plate_detector_path, **yolo_args)
+            
+            # Apply half precision after loading if needed
+            if half_precision and (device.startswith("cuda") or device == "mps"):
+                self.plate_detector_model.to(device)
+                if hasattr(self.plate_detector_model, 'model'):
+                    self.plate_detector_model.model = self.plate_detector_model.model.half()
+                    
             if enable_tensorrt and device.startswith("cuda"):
                 self.plate_detector_model.to(device)
                 if self.optimization_level >= 2:
@@ -200,12 +206,10 @@ class ALPRSystem:
         
         # Load other models with appropriate settings
         cls_args = {"task": "classify", "verbose": False}
-        if half_precision and (device.startswith("cuda") or device == "mps"):
-            cls_args["half"] = True
+        # Don't use half=True parameter
         
         detect_args = {"task": "detect", "verbose": False}
-        if half_precision and (device.startswith("cuda") or device == "mps"):
-            detect_args["half"] = True
+        # Don't use half=True parameter
         
         # Load remaining models only when needed (lazy loading)
         self.state_classifier_model = None
@@ -217,6 +221,13 @@ class ALPRSystem:
         # Load character detector since it's almost always needed
         try:
             self.char_detector_model = YOLO(char_detector_path, **detect_args)
+            
+            # Apply half precision after loading if needed
+            if half_precision and (device.startswith("cuda") or device == "mps"):
+                self.char_detector_model.to(device)
+                if hasattr(self.char_detector_model, 'model'):
+                    self.char_detector_model.model = self.char_detector_model.model.half()
+                    
             if enable_tensorrt and device.startswith("cuda"):
                 self.char_detector_model.to(device)
         except Exception as e:
@@ -225,6 +236,13 @@ class ALPRSystem:
         # Load character classifier since it's almost always needed
         try:
             self.char_classifier_model = YOLO(char_classifier_path, **cls_args)
+            
+            # Apply half precision after loading if needed
+            if half_precision and (device.startswith("cuda") or device == "mps"):
+                self.char_classifier_model.to(device)
+                if hasattr(self.char_classifier_model, 'model'):
+                    self.char_classifier_model.model = self.char_classifier_model.model.half()
+                    
             if enable_tensorrt and device.startswith("cuda"):
                 self.char_classifier_model.to(device)
         except Exception as e:
@@ -463,10 +481,16 @@ class ALPRSystem:
             if self.state_classifier_model is None:
                 try:
                     cls_args = {"task": "classify", "verbose": False}
-                    if self.half_precision and (self.device.startswith("cuda") or self.device == "mps"):
-                        cls_args["half"] = True
+                    # Don't use half=True parameter
                     
                     self.state_classifier_model = YOLO(self.state_classifier_path, **cls_args)
+                    
+                    # Apply half precision after loading if needed
+                    if self.half_precision and (self.device.startswith("cuda") or self.device == "mps"):
+                        self.state_classifier_model.to(self.device)
+                        if hasattr(self.state_classifier_model, 'model'):
+                            self.state_classifier_model.model = self.state_classifier_model.model.half()
+                    
                     if self.enable_tensorrt and self.device.startswith("cuda"):
                         self.state_classifier_model.to(self.device)
                     self._models_loaded["state_classifier"] = True
@@ -480,10 +504,16 @@ class ALPRSystem:
             if self.vehicle_detector_model is None:
                 try:
                     detect_args = {"task": "detect", "verbose": False}
-                    if self.half_precision and (self.device.startswith("cuda") or self.device == "mps"):
-                        detect_args["half"] = True
+                    # Don't use half=True parameter
                     
                     self.vehicle_detector_model = YOLO(self.vehicle_detector_path, **detect_args)
+                    
+                    # Apply half precision after loading if needed
+                    if self.half_precision and (self.device.startswith("cuda") or self.device == "mps"):
+                        self.vehicle_detector_model.to(self.device)
+                        if hasattr(self.vehicle_detector_model, 'model'):
+                            self.vehicle_detector_model.model = self.vehicle_detector_model.model.half()
+                    
                     if self.enable_tensorrt and self.device.startswith("cuda"):
                         self.vehicle_detector_model.to(self.device)
                     self._models_loaded["vehicle_detector"] = True
@@ -497,10 +527,16 @@ class ALPRSystem:
             if self.vehicle_classifier_model is None:
                 try:
                     cls_args = {"task": "classify", "verbose": False}
-                    if self.half_precision and (self.device.startswith("cuda") or self.device == "mps"):
-                        cls_args["half"] = True
+                    # Don't use half=True parameter
                     
                     self.vehicle_classifier_model = YOLO(self.vehicle_classifier_path, **cls_args)
+                    
+                    # Apply half precision after loading if needed
+                    if self.half_precision and (self.device.startswith("cuda") or self.device == "mps"):
+                        self.vehicle_classifier_model.to(self.device)
+                        if hasattr(self.vehicle_classifier_model, 'model'):
+                            self.vehicle_classifier_model.model = self.vehicle_classifier_model.model.half()
+                    
                     if self.enable_tensorrt and self.device.startswith("cuda"):
                         self.vehicle_classifier_model.to(self.device)
                     self._models_loaded["vehicle_classifier"] = True
